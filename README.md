@@ -1,16 +1,16 @@
 # Simple Flask App
 
-Aplikacja Dydaktyczna wyświetlająca imię i wiadomość w różnych formatach dla zajęć
+Aplikacja Dydaktyczna wyswietlajaca imie i wiadomosc w roznych formatach dla zajec
 o Continuous Integration, Continuous Delivery i Continuous Deployment.
 
-- W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego środowisko dla aplikacji:
+- W projekcie wykorzystamy virtual environment, dla utworzenia hermetycznego srodowiska dla aplikacji:
 
   ```
-  # tworzymy hermetyczne środowisko dla bibliotek aplikacji:
+  # tworzymy hermetyczne srodowisko dla bibliotek aplikacji:
   $ python -m venv .venv
 
-  # aktywowanie hermetycznego środowiska
-  $ source .venv/Source/activate
+  # aktywowanie hermetycznego srodowiska
+  $ source .venv/bin/activate
   $ pip install -r requirements.txt
   $ pip install -r test_requirements.txt
 
@@ -18,26 +18,26 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   $ pip list
   ```
 
-  Sprawdź: [tutorial venv](https://docs.python.org/3/tutorial/venv.html) oraz [biblioteki flask](http://flask.pocoo.org).
+  Sprawdz: [tutorial venv](https://docs.python.org/3/tutorial/venv.html) oraz [biblioteki flask](http://flask.pocoo.org).
 
 - Uruchamianie applikacji:
 
   ```
-  # jako zwykły program
+  # jako zwykly program
   $ python main.py
 
   # albo:
   $ PYTHONPATH=. FLASK_APP=hello_world flask run
   ```
 
-- Uruchamianie testów (see: http://doc.pytest.org/en/latest/capture.html):
+- Uruchamianie testow (see: http://doc.pytest.org/en/latest/capture.html):
 
   ```
   $ PYTHONPATH=. py.test
   $ PYTHONPATH=. py.test --verbose -s
   ```
 
-- Kontynuując pracę z projektem, aktywowanie hermetycznego środowiska dla aplikacji py:
+- Kontynuujac prace z projektem, aktywowanie hermetycznego srodowiska dla aplikacji py:
 
   ```
   # deaktywacja
@@ -47,15 +47,24 @@ o Continuous Integration, Continuous Delivery i Continuous Deployment.
   ```
   ...
 
-  # aktywacja 
-  $ source .venv/Source/activate
+  # aktywacja
+  $ source .venv/bin/activate
   ```
 
-- Integracja z TravisCI:
+- Single point of entry (Makefile):
 
   ```
-  # miejsce na twoje notatki
+  $ make deps
+  $ make lint
+  $ make test
+  $ make run
+  $ make docker_build
+  $ make docker_run
+  $ make docker_push
   ```
+
+- Integracja z CircleCI: konfiguracja w `.circleci/config.yml` (workflow `build-and-test`:
+  deps, lint, test, docker_build, docker_push).
 
 # Pomocnicze
 
